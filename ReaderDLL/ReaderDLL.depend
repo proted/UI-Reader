@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1606075370 source:c:\workspace\codeblocks workspace\readerdll\main.cpp
+	"main.h"
+	<stdio.h>
+
+1606075352 c:\workspace\codeblocks workspace\readerdll\main.h
+	<windows.h>
+
