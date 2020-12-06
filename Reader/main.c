@@ -8,13 +8,13 @@ LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 
 int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int iCmdShow)
 {
-    static char szClassName[] = "UDI_Reader";
+    static char szClassName[] = "DUI_Reader";
     HWND        hwnd;
     MSG         messages;
     WNDCLASSEX  wincl;
 
     wincl.cbSize        = sizeof(WNDCLASSEX);
-    wincl.style         = CS_HREDRAW | CS_VREDRAW;
+    wincl.style         = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
     wincl.lpfnWndProc   = WindowProcedure;
     wincl.cbClsExtra    = 0;
     wincl.cbWndExtra    = 0;
@@ -112,7 +112,6 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
         case WM_PAINT:
         {
             hdc = BeginPaint(hwnd, &ps);
-            SelectObject(hdc, hfont);
             if (buffer.filename != NULL)
             {
                 int horizontalOffset = (view.mode == WRAP_OFF)
